@@ -34,6 +34,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>68E3717D-4670-4B20-9B18-2DEE779E5281</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>ADA59DA3-60F5-41BD-9A12-F2FC07E1A5CE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>7D4ED081-C6A3-4262-9578-229B307CE081</key>
 		<array>
 			<dict>
@@ -73,11 +86,36 @@
 				<false/>
 			</dict>
 		</array>
+		<key>ADA59DA3-60F5-41BD-9A12-F2FC07E1A5CE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CA8C43EA-268B-45D5-B6BD-63235124FDD8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>162C4049-4FA3-49CB-8E7E-9DC1B57AF737</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>8AE945AB-3A58-4CE9-B786-67B2B849A03A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>FEF4C44B-EF6E-4FB0-B440-44A54C7A3B27</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>5F50BB33-FEF2-429D-9726-3CC7BEEEBFA9</string>
+				<string>68E3717D-4670-4B20-9B18-2DEE779E5281</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -113,11 +151,146 @@
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>echo "${alfred_version}" | cut -d. -f1 | tr -d '\n'</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>68E3717D-4670-4B20-9B18-2DEE779E5281</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>open -a 'Script Editor' "${1}"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>99D694BC-7C8B-4735-A22C-21F9CAAE5A54</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>readonly cache="${alfred_workflow_cache}/cache.json"
+
+[[ -n "$(find "${cache}" -mtime +15)" ]] &amp;&amp; echo -n 'REBUILD_CACHE'</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FEF4C44B-EF6E-4FB0-B440-44A54C7A3B27</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>asdic</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching for AppleScript dictionaries…</string>
+				<key>script</key>
+				<string>readonly cache="${alfred_workflow_cache}/cache.json"
+
+# If cache does not exist, build it now
+if [[ ! -f "${cache}" ]]; then
+  osascript -e 'tell application id "com.runningwithcrayons.Alfred" to run trigger "rebuild_cache" in workflow "com.vitorgalvao.alfred.applescriptdictionaries"'
+
+  until [[ -f "${cache}" ]]; do
+    sleep 0.2
+  done
+fi
+
+cat "${cache}"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>AppleScript Dictionaries</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7D4ED081-C6A3-4262-9578-229B307CE081</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
-readonly remote_info_plist="https://raw.githubusercontent.com/alfredapp/applescript-dictionaries-workflow/master/Workflow/info.plist"
-readonly workflow_url="alfredapp/applescript-dictionaries-workflow"
+				<string># Special values for OneUpdater reuse
+readonly workflow_webaddress="$(/usr/libexec/PlistBuddy -c 'print webaddress' './info.plist')"
+readonly workflow_repo="$(basename "$(dirname "${workflow_webaddress}")")/$(basename "${workflow_webaddress}")"
+
+# THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
+readonly remote_info_plist="${workflow_webaddress}/raw/main/Workflow/info.plist"
+readonly workflow_url="${workflow_repo}"
 readonly download_type='github_release'
 readonly frequency_check='4'
 
@@ -194,138 +367,134 @@ fi</string>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>5F50BB33-FEF2-429D-9726-3CC7BEEEBFA9</string>
+			<string>CA8C43EA-268B-45D5-B6BD-63235124FDD8</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>open -a 'Script Editor' "${1}"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>2</integer>
+						<key>matchstring</key>
+						<string>4</string>
+						<key>outputlabel</key>
+						<string>Update</string>
+						<key>uid</key>
+						<string>162C4049-4FA3-49CB-8E7E-9DC1B57AF737</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>Version 4</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>99D694BC-7C8B-4735-A22C-21F9CAAE5A54</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>asdic</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Searching for AppleScript dictionaries…</string>
-				<key>script</key>
-				<string>readonly cache="${alfred_workflow_cache}/cache.json"
-
-# If cache does not exist, build it now
-if [[ ! -f "${cache}" ]]; then
-  osascript -e 'tell application id "com.runningwithcrayons.Alfred" to run trigger "rebuild_cache" in workflow "com.vitorgalvao.alfred.applescriptdictionaries"'
-
-  until [[ -f "${cache}" ]]; do
-    sleep 0.2
-  done
-fi
-
-cat "${cache}"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>AppleScript Dictionaries</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>7D4ED081-C6A3-4262-9578-229B307CE081</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>readonly cache="${alfred_workflow_cache}/cache.json"
-
-[[ -n "$(find "${cache}" -mtime +15)" ]] &amp;&amp; echo -n 'REBUILD_CACHE'</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>FEF4C44B-EF6E-4FB0-B440-44A54C7A3B27</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>:applescriptdictionariesforceupdate</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>Force update of AppleScript dictionaries</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>18094443-82E3-483A-B5EE-3B9CD814052E</string>
+			<string>ADA59DA3-60F5-41BD-9A12-F2FC07E1A5CE</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string># Special values for OneUpdater reuse
+readonly workflow_webaddress="$(/usr/libexec/PlistBuddy -c 'print webaddress' './info.plist')"
+readonly workflow_repo_name="$(basename "${workflow_webaddress}" | sed 's/-workflow$//')"
+
+# THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
+readonly remote_info_plist="https://github.com/alfredapp/legacy-workflows/raw/main/Workflows/${workflow_repo_name}/info.plist"
+readonly workflow_url="https://github.com/alfredapp/legacy-workflows/raw/main/Workflows/${workflow_repo_name}/${workflow_repo_name}.alfredworkflow"
+readonly download_type='direct'
+readonly frequency_check='4'
+
+# FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED!
+function abort {
+  echo "${1}" &gt;&amp;2
+  exit 1
+}
+
+function url_exists {
+  curl --silent --location --output /dev/null --fail --range 0-0 "${1}"
+}
+
+function notification {
+  local -r notificator="$(find . -type d -name 'Notificator.app')"
+  if [[ -n "${notificator}" ]]; then
+    "${notificator}/Contents/Resources/Scripts/notificator" --message "${1}" --title "${alfred_workflow_name}" --subtitle 'A new version is available'
+    return
+  fi
+
+  local -r terminal_notifier="$(find . -type f -name 'terminal-notifier')"
+  if [[ -n "${terminal_notifier}" ]]; then
+    "${terminal_notifier}" -title "${alfred_workflow_name}" -subtitle 'A new version is available' -message "${1}"
+    return
+  fi
+
+  osascript -e "display notification \"${1}\" with title \"${alfred_workflow_name}\" subtitle \"A new version is available\""
+}
+
+# Local sanity checks
+readonly local_info_plist='info.plist'
+readonly local_version="$(/usr/libexec/PlistBuddy -c 'print version' "${local_info_plist}")"
+
+[[ -n "${local_version}" ]] || abort 'You need to set a workflow version in the configuration sheet.'
+[[ "${download_type}" =~ ^(direct|page|github_release)$ ]] || abort "'download_type' (${download_type}) needs to be one of 'direct', 'page', or 'github_release'."
+[[ "${frequency_check}" =~ ^[0-9]+$ ]] || abort "'frequency_check' (${frequency_check}) needs to be a number."
+
+# Check for updates
+if [[ $(find "${local_info_plist}" -mtime +"${frequency_check}"d) ]]; then
+  if ! url_exists "${remote_info_plist}"; then abort "'remote_info_plist' (${remote_info_plist}) appears to not be reachable."; fi # Remote sanity check
+
+  readonly tmp_file="$(mktemp)"
+  curl --silent --location --output "${tmp_file}" "${remote_info_plist}"
+  readonly remote_version="$(/usr/libexec/PlistBuddy -c 'print version' "${tmp_file}")"
+
+  if [[ "${local_version}" == "${remote_version}" ]]; then
+    touch "${local_info_plist}" # Reset timer by touching local file
+    exit 0
+  fi
+
+  if [[ "${download_type}" == 'page' ]]; then
+    notification 'Opening download page…'
+    open "${workflow_url}"
+    exit 0
+  fi
+
+  download_url="$([[ "${download_type}" == 'github_release' ]] &amp;&amp; curl --silent "https://api.github.com/repos/${workflow_url}/releases/latest" | grep 'browser_download_url' | head -1 | sed -E 's/.*browser_download_url": "(.*)"/\1/' || echo "${workflow_url}")"
+
+  if url_exists "${download_url}"; then
+    notification 'Downloading and installing…'
+    curl --silent --location --output "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow" "${download_url}"
+    open "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow"
+  else
+    abort "'workflow_url' (${download_url}) appears to not be reachable."
+  fi
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>8AE945AB-3A58-4CE9-B786-67B2B849A03A</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -354,6 +523,27 @@ cat "${cache}"</string>
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>4D3E1793-10DA-4EA8-B0B2-6A64955267AD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>:applescriptdictionariesforceupdate</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Force update of AppleScript dictionaries</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>18094443-82E3-483A-B5EE-3B9CD814052E</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -418,7 +608,7 @@ osascript -l JavaScript -e '
 	<key>readme</key>
 	<string>Run `asdic` to list installed AppleScript dictionaries. Press ↵ to open.
 
-![](https://user-images.githubusercontent.com/1699443/152067731-cbb4db84-a387-4387-927b-ee16c40b1815.png)
+![Alfred results for asdic m](images/about/asdicm.png)
 
 The first run will take a few seconds to find the dictionaries, but subsequent runs will be instant. Updating the dictionaries list is done automatically but can be forced with `:applescriptdictionariesforceupdate`.</string>
 	<key>uidata</key>
@@ -439,12 +629,12 @@ The first run will take a few seconds to find the dictionaries, but subsequent r
 			<key>ypos</key>
 			<integer>205</integer>
 		</dict>
-		<key>5F50BB33-FEF2-429D-9726-3CC7BEEEBFA9</key>
+		<key>68E3717D-4670-4B20-9B18-2DEE779E5281</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>12</integer>
+			<integer>5</integer>
 			<key>note</key>
-			<string>OneUpdater</string>
+			<string>Major Alfred version</string>
 			<key>xpos</key>
 			<integer>605</integer>
 			<key>ypos</key>
@@ -455,7 +645,7 @@ The first run will take a few seconds to find the dictionaries, but subsequent r
 			<key>note</key>
 			<string>Rebuild cache</string>
 			<key>xpos</key>
-			<integer>790</integer>
+			<integer>785</integer>
 			<key>ypos</key>
 			<integer>360</integer>
 		</dict>
@@ -467,6 +657,17 @@ The first run will take a few seconds to find the dictionaries, but subsequent r
 			<integer>45</integer>
 			<key>ypos</key>
 			<integer>35</integer>
+		</dict>
+		<key>8AE945AB-3A58-4CE9-B786-67B2B849A03A</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>12</integer>
+			<key>note</key>
+			<string>OneUpdater</string>
+			<key>xpos</key>
+			<integer>905</integer>
+			<key>ypos</key>
+			<integer>185</integer>
 		</dict>
 		<key>99D694BC-7C8B-4735-A22C-21F9CAAE5A54</key>
 		<dict>
@@ -484,6 +685,26 @@ The first run will take a few seconds to find the dictionaries, but subsequent r
 			<key>ypos</key>
 			<integer>360</integer>
 		</dict>
+		<key>ADA59DA3-60F5-41BD-9A12-F2FC07E1A5CE</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>5</integer>
+			<key>xpos</key>
+			<integer>765</integer>
+			<key>ypos</key>
+			<integer>55</integer>
+		</dict>
+		<key>CA8C43EA-268B-45D5-B6BD-63235124FDD8</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>12</integer>
+			<key>note</key>
+			<string>OneUpdater</string>
+			<key>xpos</key>
+			<integer>905</integer>
+			<key>ypos</key>
+			<integer>35</integer>
+		</dict>
 		<key>FEF4C44B-EF6E-4FB0-B440-44A54C7A3B27</key>
 		<dict>
 			<key>note</key>
@@ -495,7 +716,7 @@ The first run will take a few seconds to find the dictionaries, but subsequent r
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>2022.1</string>
+	<string>2022.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/alfredapp/applescript-dictionaries-workflow/</string>
 </dict>
