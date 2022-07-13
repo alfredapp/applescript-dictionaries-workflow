@@ -6,14 +6,10 @@ Find and open Mac automation dictionaries
 
 ## About
 
-<!-- BEGIN ABOUT -->
+Run `asdic` to list installed AppleScript dictionaries. Press ↩ to open.
 
-Run `asdic` to list installed AppleScript dictionaries. Press ↵ to open.
-
-![](https://user-images.githubusercontent.com/1699443/152067731-cbb4db84-a387-4387-927b-ee16c40b1815.png)
+![Alfred results for asdic m](Workflow/images/about/asdicm.png)
 
 The first run will take a few seconds to find the dictionaries, but subsequent runs will be instant. Updating the dictionaries list is done automatically but can be forced with `:applescriptdictionariesforceupdate`.
-
-<!-- END ABOUT -->
 
 <a href='https://github.com/alfredapp/applescript-dictionaries-workflow/releases/latest/download/AppleScript.Dictionaries.alfredworkflow'>⤓ Download Workflow</a>
