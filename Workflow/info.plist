@@ -133,31 +133,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>readonly cache="${alfred_workflow_cache}/cache.json"
-
-[[ -n "$(find "${cache}" -mtime +15)" ]] &amp;&amp; echo -n 'REBUILD_CACHE'</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>FEF4C44B-EF6E-4FB0-B440-44A54C7A3B27</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -171,7 +146,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>asdic</string>
+				<string>{var:search_keyword}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -214,6 +189,31 @@ cat "${cache}"</string>
 			<string>7D4ED081-C6A3-4262-9578-229B307CE081</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>readonly cache="${alfred_workflow_cache}/cache.json"
+
+[[ -n "$(find "${cache}" -mtime +15)" ]] &amp;&amp; echo -n 'REBUILD_CACHE'</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>FEF4C44B-EF6E-4FB0-B440-44A54C7A3B27</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -313,6 +313,27 @@ fi</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>:applescriptdictionariesforceupdate</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Force update of AppleScript dictionaries</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>18094443-82E3-483A-B5EE-3B9CD814052E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>conditions</key>
 				<array>
 					<dict>
@@ -339,27 +360,6 @@ fi</string>
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>4D3E1793-10DA-4EA8-B0B2-6A64955267AD</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>:applescriptdictionariesforceupdate</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>Force update of AppleScript dictionaries</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>18094443-82E3-483A-B5EE-3B9CD814052E</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -424,7 +424,9 @@ osascript -l JavaScript -e '
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Run `asdic` to list installed AppleScript dictionaries. Press ↩ to open.
+	<string>## Usage
+
+Run the Search Keyword (default: `asdic`) to list installed AppleScript dictionaries. Type to Filter. ↩ to open.
 
 ![Alfred results for asdic m](images/about/asdicm.png)
 
@@ -503,11 +505,31 @@ The first run will take a few seconds to find the dictionaries, but subsequent r
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
-	<array/>
-	<key>variablesdontexport</key>
-	<array/>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>asdic</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Search Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>search_keyword</string>
+		</dict>
+	</array>
 	<key>version</key>
-	<string>2022.3</string>
+	<string>2022.4</string>
 	<key>webaddress</key>
 	<string>https://github.com/alfredapp/applescript-dictionaries-workflow/</string>
 </dict>

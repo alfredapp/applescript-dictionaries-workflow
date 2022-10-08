@@ -6,7 +6,9 @@ Find and open Mac automation dictionaries
 
 ## About
 
-Run `asdic` to list installed AppleScript dictionaries. Press ↩ to open.
+## Usage
+
+Run the Search Keyword (default: `asdic`) to list installed AppleScript dictionaries. Type to Filter. ↩ to open.
 
 ![Alfred results for asdic m](Workflow/images/about/asdicm.png)
 
