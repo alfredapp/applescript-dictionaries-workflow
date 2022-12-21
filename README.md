@@ -10,4 +10,4 @@ Search through installed AppleScript dictionaries via the Search Keyword (defaul
 
 ![Alfred results for asdic m](Workflow/images/about/asdicm.png)
 
-The first run will take a few seconds to find the dictionaries, but subsequent runs will be instant. Updating the dictionaries list is done automatically but can be forced with `:applescriptdictionariesforceupdate`.
+The first run will take a few seconds to find the dictionaries, but subsequent runs will be instant. Updating the dictionaries list is done automatically but can be forced with the `:applescriptdictionariesforceupdate` keyword.
