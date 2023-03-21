@@ -703,7 +703,7 @@ A minority of apps use an older dictionary format which can be converted with th
 		</dict>
 	</array>
 	<key>version</key>
-	<string>2023.1</string>
+	<string>2023.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/alfredapp/applescript-dictionaries-workflow/</string>
 </dict>

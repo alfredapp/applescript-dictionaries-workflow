@@ -2,11 +2,11 @@
 
 Find and open Mac automation dictionaries
 
-<a href='https://alfred.app/workflows/alfredapp/applescript-dictionaries'>⤓ Install on the Alfred Gallery</a>
+[⤓ Install on the Alfred Gallery](https://alfred.app/workflows/alfredapp/applescript-dictionaries)
 
 ## Usage
 
-Search through installed AppleScript dictionaries via the Search Keyword (default: `asdic`). <kbd>↩&#xFE0E;</kbd> to open.
+Search through installed AppleScript dictionaries via the `asdic` keyword. <kbd>↩&#xFE0E;</kbd> to open.
 
 ![Alfred results for asdic m](Workflow/images/about/asdicm.png)
 
