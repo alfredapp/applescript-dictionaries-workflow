@@ -570,7 +570,7 @@ function run(argv) {
 	<key>readme</key>
 	<string>## Usage
 
-Search through installed AppleScript dictionaries via the Search Keyword (default: `asdic`). &lt;kbd&gt;↩&lt;/kbd&gt; to open.
+Search through installed AppleScript dictionaries via the `asdic` keyword. &lt;kbd&gt;↩&lt;/kbd&gt; to open.
 
 ![Alfred results for asdic m](images/about/asdicm.png)
 
