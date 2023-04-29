@@ -10,7 +10,7 @@ Search through installed AppleScript dictionaries via the `asdic` keyword. <kbd>
 
 ![Alfred results for asdic m](Workflow/images/about/asdicm.png)
 
-The first run will take a few seconds to find the dictionaries, but subsequent runs will be instant. Updating the dictionaries list is done automatically but can be forced with <kbd>fn</kbd><kbd>↩&#xFE0E;</kbd>.
+The first run will take a few seconds to find the dictionaries, but subsequent runs will be instant. Updating the dictionaries list is done automatically but can be forced with <kbd>⌘</kbd><kbd>⌥</kbd><kbd>⌃</kbd><kbd>↩&#xFE0E;</kbd>.
 
 A minority of apps use an older dictionary format which can be converted with the [Universal Action](https://www.alfredapp.com/help/features/universal-actions/).
 
