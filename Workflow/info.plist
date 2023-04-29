@@ -90,7 +90,7 @@
 				<key>destinationuid</key>
 				<string>04685AAA-02BD-4F02-9A17-47CACF7B64C3</string>
 				<key>modifiers</key>
-				<integer>8388608</integer>
+				<integer>1835008</integer>
 				<key>modifiersubtext</key>
 				<string>Force Cache Update</string>
 				<key>vitoclose</key>
@@ -344,7 +344,7 @@ cat "${cache}"</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string># Setuo cache
+				<string># Setup cache
 readonly cache="${alfred_workflow_cache}/cache.json"
 mkdir -p "$(dirname "${cache}")"
 
@@ -574,7 +574,7 @@ Search through installed AppleScript dictionaries via the `asdic` keyword. &lt;k
 
 ![Alfred results for asdic m](images/about/asdicm.png)
 
-The first run will take a few seconds to find the dictionaries, but subsequent runs will be instant. Updating the dictionaries list is done automatically but can be forced with &lt;kbd&gt;fn&lt;/kbd&gt;&lt;kbd&gt;↩&lt;/kbd&gt;.
+The first run will take a few seconds to find the dictionaries, but subsequent runs will be instant. Updating the dictionaries list is done automatically but can be forced with &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;⌥&lt;/kbd&gt;&lt;kbd&gt;⌃&lt;/kbd&gt;&lt;kbd&gt;↩&lt;/kbd&gt;.
 
 A minority of apps use an older dictionary format which can be converted with the [Universal Action](https://www.alfredapp.com/help/features/universal-actions/).
 
