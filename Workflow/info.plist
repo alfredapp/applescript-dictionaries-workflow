@@ -45,7 +45,18 @@
 			</dict>
 		</array>
 		<key>7307CF18-FA86-41AF-BDC7-AB66D75667E9</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A1F4063B-FC58-4DB8-B72C-BE7990FC7C5E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>7A58F92F-50C1-456F-90EA-BE0F47F2C5A4</key>
 		<array>
 			<dict>
@@ -67,9 +78,9 @@
 				<key>modifiers</key>
 				<integer>1835008</integer>
 				<key>modifiersubtext</key>
-				<string>Force Cache Update</string>
+				<string>Force Reload Cache</string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -118,7 +129,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>AppleScript Dictionaries</string>
+	<string>------R- AppleScript Dictionaries</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -180,52 +191,24 @@
 				<key>runningsubtext</key>
 				<string>Searching for AppleScript dictionaries…</string>
 				<key>script</key>
-				<string># Find dictionaries
-IFS=$'\n' read -d '' -rA dictionaries &lt; &lt;(find \
-  '/Applications' \
-  "${HOME}/Applications" \
-  '/System/Applications' \
-  '/System/Cryptexes/App/System/Applications' \
-  '/System/Library/CoreServices/' \
-  '/System/Library/ScriptingAdditions' \
-  '/System/Library/ScriptingDefinitions' \
-  '/System/Library/PrivateFrameworks' \
-  "${alfred_workflow_data}" \
-  -name '*.sdef' \
-  -path '*Contents/Resources*' 2&gt; /dev/null)
-
-# Generate cache
-osascript -l JavaScript -e '
-  function run(argv) {
-    return JSON.stringify({
-      cache: { seconds: 86400, loosereload: true },
-      items: argv.map(dict =&gt; {
-        const app_path = $(dict).stringByDeletingLastPathComponent.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent.js
-
-        return {
-          uid: dict,
-          type: "file",
-          title: $(app_path).lastPathComponent.stringByDeletingPathExtension.js,
-          subtitle: dict,
-          icon: { "path": app_path, "type": "fileicon" },
-          arg: dict,
-          mods: { fn: { title: "Force Cache Update" } }
-        }})
-      })
-    }
-' "${dictionaries[@]}"</string>
+				<string></string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string></string>
+				<string>find-dicts</string>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
 				<string>AppleScript Dictionaries</string>
 				<key>type</key>
-				<integer>11</integer>
+				<integer>8</integer>
 				<key>withspace</key>
 				<true/>
+			</dict>
+			<key>inboundconfig</key>
+			<dict>
+				<key>externalid</key>
+				<string>show_list</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
@@ -233,6 +216,25 @@ osascript -l JavaScript -e '
 			<string>7D4ED081-C6A3-4262-9578-229B307CE081</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>show_list</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>A1F4063B-FC58-4DB8-B72C-BE7990FC7C5E</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -256,6 +258,61 @@ osascript -l JavaScript -e '
 			<string>7307CF18-FA86-41AF-BDC7-AB66D75667E9</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Please ensure the app has an AppleScript dictionary</string>
+				<key>title</key>
+				<string>Failed to Generate Dictionary</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>8F720020-3637-4681-926C-B434F10BCF70</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>soundname</key>
+				<string>Sosumi</string>
+				<key>systemsound</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.playsound</string>
+			<key>uid</key>
+			<string>27798F6D-1A31-4878-B7F9-CCB14F11A67F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>acceptsmulti</key>
+				<integer>0</integer>
+				<key>filetypes</key>
+				<array>
+					<string>com.apple.application-bundle</string>
+				</array>
+				<key>name</key>
+				<string>Generate AppleScript Dictionary</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.action</string>
+			<key>uid</key>
+			<string>7A58F92F-50C1-456F-90EA-BE0F47F2C5A4</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -337,61 +394,6 @@ function run(argv) {
 			<string>D912659A-805F-410F-A602-8BA6AC894BEF</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>Please ensure the app has an AppleScript dictionary</string>
-				<key>title</key>
-				<string>Failed to Generate Dictionary</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>8F720020-3637-4681-926C-B434F10BCF70</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>acceptsmulti</key>
-				<integer>0</integer>
-				<key>filetypes</key>
-				<array>
-					<string>com.apple.application-bundle</string>
-				</array>
-				<key>name</key>
-				<string>Generate AppleScript Dictionary</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.action</string>
-			<key>uid</key>
-			<string>7A58F92F-50C1-456F-90EA-BE0F47F2C5A4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>soundname</key>
-				<string>Sosumi</string>
-				<key>systemsound</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.playsound</string>
-			<key>uid</key>
-			<string>27798F6D-1A31-4878-B7F9-CCB14F11A67F</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -501,6 +503,13 @@ A minority of apps use an older dictionary format which can be converted with th
 			<string>Open dictionary</string>
 			<key>xpos</key>
 			<real>265</real>
+			<key>ypos</key>
+			<real>115</real>
+		</dict>
+		<key>A1F4063B-FC58-4DB8-B72C-BE7990FC7C5E</key>
+		<dict>
+			<key>xpos</key>
+			<real>750</real>
 			<key>ypos</key>
 			<real>115</real>
 		</dict>
