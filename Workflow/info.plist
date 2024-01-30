@@ -6,19 +6,6 @@
 	<string>com.alfredapp.vitor.applescriptdictionaries</string>
 	<key>connections</key>
 	<dict>
-		<key>04685AAA-02BD-4F02-9A17-47CACF7B64C3</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>7307CF18-FA86-41AF-BDC7-AB66D75667E9</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>0C34FB83-CBAA-41E0-B482-47270F6ABB19</key>
 		<array>
 			<dict>
@@ -45,18 +32,7 @@
 			</dict>
 		</array>
 		<key>7307CF18-FA86-41AF-BDC7-AB66D75667E9</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>A1F4063B-FC58-4DB8-B72C-BE7990FC7C5E</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
+		<array/>
 		<key>7A58F92F-50C1-456F-90EA-BE0F47F2C5A4</key>
 		<array>
 			<dict>
@@ -72,16 +48,6 @@
 		</array>
 		<key>7D4ED081-C6A3-4262-9578-229B307CE081</key>
 		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>04685AAA-02BD-4F02-9A17-47CACF7B64C3</string>
-				<key>modifiers</key>
-				<integer>1835008</integer>
-				<key>modifiersubtext</key>
-				<string>Force Reload Cache</string>
-				<key>vitoclose</key>
-				<true/>
-			</dict>
 			<dict>
 				<key>destinationuid</key>
 				<string>99D694BC-7C8B-4735-A22C-21F9CAAE5A54</string>
@@ -129,17 +95,9 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>------R- AppleScript Dictionaries</string>
+	<string>AppleScript Dictionaries</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>04685AAA-02BD-4F02-9A17-47CACF7B64C3</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -205,36 +163,12 @@
 				<key>withspace</key>
 				<true/>
 			</dict>
-			<key>inboundconfig</key>
-			<dict>
-				<key>externalid</key>
-				<string>show_list</string>
-			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>7D4ED081-C6A3-4262-9578-229B307CE081</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>externaltriggerid</key>
-				<string>show_list</string>
-				<key>passinputasargument</key>
-				<false/>
-				<key>passvariables</key>
-				<false/>
-				<key>workflowbundleid</key>
-				<string>self</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.callexternaltrigger</string>
-			<key>uid</key>
-			<string>A1F4063B-FC58-4DB8-B72C-BE7990FC7C5E</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -435,20 +369,11 @@ Search through installed AppleScript dictionaries via the `asdic` keyword. &lt;k
 
 ![Alfred results for asdic m](images/about/asdicm.png)
 
-The dictionaries list is updated automatically but a cache reload can be forced with &lt;kbd&gt;⌘&lt;/kbd&gt;&lt;kbd&gt;⌥&lt;/kbd&gt;&lt;kbd&gt;⌃&lt;/kbd&gt;&lt;kbd&gt;↩&lt;/kbd&gt;.
-
 A minority of apps use an older dictionary format which can be converted with the [Universal Action](https://www.alfredapp.com/help/features/universal-actions/).
 
 ![Universal Action for generating dictionary](images/about/newdict.png)</string>
 	<key>uidata</key>
 	<dict>
-		<key>04685AAA-02BD-4F02-9A17-47CACF7B64C3</key>
-		<dict>
-			<key>xpos</key>
-			<real>265</real>
-			<key>ypos</key>
-			<real>35</real>
-		</dict>
 		<key>0C34FB83-CBAA-41E0-B482-47270F6ABB19</key>
 		<dict>
 			<key>xpos</key>
@@ -503,13 +428,6 @@ A minority of apps use an older dictionary format which can be converted with th
 			<string>Open dictionary</string>
 			<key>xpos</key>
 			<real>265</real>
-			<key>ypos</key>
-			<real>115</real>
-		</dict>
-		<key>A1F4063B-FC58-4DB8-B72C-BE7990FC7C5E</key>
-		<dict>
-			<key>xpos</key>
-			<real>750</real>
 			<key>ypos</key>
 			<real>115</real>
 		</dict>
