@@ -154,6 +154,8 @@
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string>find-dicts</string>
+				<key>skipuniversalaction</key>
+				<true/>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
