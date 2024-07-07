@@ -468,7 +468,7 @@ A minority of apps use an older dictionary format which can be converted with th
 		</dict>
 	</array>
 	<key>version</key>
-	<string>2023.4</string>
+	<string>2024.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/alfredapp/applescript-dictionaries-workflow/</string>
 </dict>
