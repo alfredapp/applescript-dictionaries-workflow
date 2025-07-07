@@ -33,6 +33,9 @@ func findDict(inFolder: URL) -> URL? {
   ).first(where: { $0.pathExtension == "sdef" })
 }
 
+// Environment
+let excludeVolumes = (ProcessInfo.processInfo.environment["exclude_volumes"] ?? "0") == "1"
+
 // Find apps with Spotlight
 let spotQuery = "kMDItemContentTypeTree == 'com.apple.application-bundle'"
 let searchQuery = MDQueryCreate(kCFAllocatorDefault, spotQuery as CFString, nil, nil)
@@ -45,6 +48,7 @@ let spotApps: [URL] = (0..<resultCount).compactMap { resultIndex in
   let resultItem = Unmanaged<MDItem>.fromOpaque(rawPointer!).takeUnretainedValue()
 
   guard let resultPath = MDItemCopyAttribute(resultItem, kMDItemPath) as? String else { return nil }
+  if (excludeVolumes) { guard !resultPath.hasPrefix("/Volumes/") else { return nil } }
   return URL(fileURLWithPath: resultPath)
 }
 

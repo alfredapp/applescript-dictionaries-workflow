@@ -466,6 +466,25 @@ A minority of apps use an older dictionary format which can be converted with th
 			<key>variable</key>
 			<string>search_keyword</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Exclude apps in external volumes</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Search Scope</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>exclude_volumes</string>
+		</dict>
 	</array>
 	<key>version</key>
 	<string>2024.1</string>
