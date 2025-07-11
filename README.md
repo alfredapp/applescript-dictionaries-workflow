@@ -6,7 +6,7 @@ Find and open Mac automation dictionaries
 
 ## Usage
 
-Search through installed AppleScript dictionaries via the `asdic` keyword. <kbd>↩&#xFE0E;</kbd> to open.
+Search through installed AppleScript dictionaries via the `asdic` keyword. <kbd>↩</kbd> to open.
 
 ![Alfred results for asdic m](Workflow/images/about/asdicm.png)
 
